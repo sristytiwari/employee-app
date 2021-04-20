@@ -1,6 +1,6 @@
 import "./App.css";
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Redirect,
   Route,
   Switch,
@@ -38,11 +38,11 @@ function App() {
 
         <Route exact path="/create-task">
          
-          { isLoggedIn === 'true' ?  <NewTask /> : <Redirect to="/login" />  }
+             <NewTask />  
          
         </Route>
         <Route exact path="/tasks">
-        { isLoggedIn === 'true' ?   <Homepage /> : <Redirect to="/login" />  }
+         <Homepage />  
          
         </Route>
       </Switch>
