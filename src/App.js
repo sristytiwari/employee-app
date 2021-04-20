@@ -38,11 +38,11 @@ function App() {
 
         <Route exact path="/create-task">
          
-             <NewTask />  
+          { localStorage.getItem('loggedIn') === 'true' ?  <NewTask /> : <Redirect to="/login" />  }
          
         </Route>
         <Route exact path="/tasks">
-         <Homepage />  
+        { localStorage.getItem('loggedIn') === 'true' ?   <Homepage /> : <Redirect to="/login" />  }
          
         </Route>
       </Switch>
