@@ -18,7 +18,7 @@ export default function Signup() {
 
     const user = values;
     userRef.push(user);
-    localStorage.setItem("loggedIn", true);
+
     history.push("/tasks");
   };
 

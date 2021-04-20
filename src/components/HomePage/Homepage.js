@@ -49,9 +49,9 @@ export default function Homepage() {
   const setSort = (type) => {
     let sortedArray = Object.entries(tasks).sort((a, b) => {
       if (type === "date") {
-        return   new Date(b[1].creationDate) - new Date(a[1].creationDate);
+        return new Date(b[1].creationDate) - new Date(a[1].creationDate);
       } else {
-        return   b[1].upvote - a[1].upvote;
+        return b[1].upvote - a[1].upvote;
       }
     });
 
@@ -88,7 +88,6 @@ export default function Homepage() {
           <Nav.Link
             onClick={() => {
               history.push("/login");
-              localStorage.setItem("loggedIn", false)
             }}
           >
             Logout

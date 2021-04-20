@@ -11,17 +11,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./components/Login/Login";
 import Homepage from "./components/HomePage/Homepage";
 import Signup from "./components/Signup/Signup";
-import { useEffect} from "react";
 
 function App() {
-  const isLoggedIn = localStorage.getItem('loggedIn') || false;
- 
-  useEffect(() => {
-    if (!localStorage.getItem("loggedIn")) {
-      localStorage.setItem("loggedIn", false);
-    }
-  }, []);
-
   return (
     <Router>
       <Switch>
@@ -37,13 +28,10 @@ function App() {
         </Route>
 
         <Route exact path="/create-task">
-         
-          { localStorage.getItem('loggedIn') === 'true' ?  <NewTask /> : <Redirect to="/login" />  }
-         
+          <NewTask />
         </Route>
         <Route exact path="/tasks">
-        { localStorage.getItem('loggedIn') === 'true' ?   <Homepage /> : <Redirect to="/login" />  }
-         
+          <Homepage />
         </Route>
       </Switch>
     </Router>

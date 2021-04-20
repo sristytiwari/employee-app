@@ -81,7 +81,6 @@ export default function NewTask() {
         <Nav className="">
           <Nav.Link
             onClick={() => {
-              localStorage.setItem("loggedIn", false)
               history.push("/login");
             }}
           >
