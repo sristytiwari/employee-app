@@ -1,4 +1,4 @@
-# Prime self serve
+# Employee Task App
 This is the repository for the Employee Task App.  
   <br />
   <br />
