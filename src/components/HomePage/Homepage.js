@@ -19,11 +19,8 @@ export default function Homepage() {
   useEffect(() => {
     const taskRef = firebase.database().ref("Task");
     taskRef.on("value", (tasks) => {
-      console.log(tasks.val());
       let Obj = {};
       Object.entries(tasks.val()).map((value, index) => {
-        console.log(value[1]);
-
         value[1]["shouldUpvote"] = false;
         return (Obj[value[0]] = value[1]);
       });
@@ -37,7 +34,7 @@ export default function Homepage() {
     taskRef.update({
       upvote: selectedTask[1].upvote + 1,
     });
-    console.log(selectedTask);
+
     let updatedObj = {
       ...selectedTask[1],
       shouldUpvote: true,
@@ -48,41 +45,34 @@ export default function Homepage() {
     };
     setTasks({ ...tasks, ...newObj });
   };
-  useEffect(() => {
-    console.log(tasks);
-  }, [tasks]);
 
   const setSort = (type) => {
     let sortedArray = Object.entries(tasks).sort((a, b) => {
-      console.log(new Date(a[1].creationDate), new Date(b[1].creationDate));
       if (type === "date") {
         return new Date(a[1].creationDate) - new Date(b[1].creationDate);
       } else {
         return a[1].upvote - b[1].upvote;
       }
     });
-    console.log(sortedArray);
+
     let sortedObj = {};
     sortedArray.forEach((item) => {
       sortedObj[item[0]] = item[1];
     });
     setTasks(sortedObj);
   };
-  useEffect(()=>{
-    setTimeout(()=>{
+  useEffect(() => {
+    setTimeout(() => {
       setAlert({
         variant: "",
         msg: "",
         showAlert: false,
       });
-
-    },5000)
-
-  },[alert])
+    }, 5000);
+  }, [alert]);
 
   return (
     <div>
-     
       <Navbar bg="primary" variant="dark">
         <Navbar.Brand href="#home">Task Manager</Navbar.Brand>
         <Nav className="mr-auto">
@@ -128,7 +118,7 @@ export default function Homepage() {
               let dateString = moment(new Date(task[1].creationDate)).format(
                 "DD MMM, YY"
               );
-              console.log(dateString);
+
               return (
                 <tbody>
                   <tr>

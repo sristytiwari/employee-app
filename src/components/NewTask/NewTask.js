@@ -7,39 +7,37 @@ import { useHistory } from "react-router";
 
 export default function NewTask() {
   let history = useHistory();
-let formRef = useRef();
-const [alert, setAlert] = useState({
-  variant: "",
-  msg: "",
-  showAlert: false,
-});
+  let formRef = useRef();
+  const [alert, setAlert] = useState({
+    variant: "",
+    msg: "",
+    showAlert: false,
+  });
 
   let onSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target),
       formDataObj = Object.fromEntries(formData.entries());
-    console.log(formDataObj,e.target);
+
     addToDB(formDataObj);
   };
   let addToDB = (values) => {
     const taskRef = firebase.database().ref("Task");
-    let tags =[];
-     Object.entries(values).forEach((value , index)=>{
-     if(value[1]==='on'){
-       tags.push(value[0])
-
-     }
-
-    })
-    let creationDate= new Date().toString();
-    const task ={
-      title:values.title,
-      description:values.description,
-      tags:tags,
+    let tags = [];
+    Object.entries(values).forEach((value, index) => {
+      if (value[1] === "on") {
+        tags.push(value[0]);
+      }
+    });
+    let creationDate = new Date().toString();
+    const task = {
+      title: values.title,
+      description: values.description,
+      tags: tags,
       upvote: 0,
       creationDate: creationDate,
-    }
-    console.log(task);
+    };
+
     taskRef.push(task);
     setAlert({
       variant: "primary",
@@ -47,24 +45,26 @@ const [alert, setAlert] = useState({
       showAlert: true,
     });
     formRef.current.reset();
-
   };
 
-  useEffect(()=>{
-    setTimeout(()=>{
+  useEffect(() => {
+    setTimeout(() => {
       setAlert({
         variant: "",
         msg: "",
         showAlert: false,
       });
+    }, 3000);
+  }, [alert]);
 
-    },3000)
-
-  },[alert])
-  
-
-
-  const tags = ["Technical", "Marketing", "Event", "Meeting" ,"Games","Fun Activity"];
+  const tags = [
+    "Technical",
+    "Marketing",
+    "Event",
+    "Meeting",
+    "Games",
+    "Fun Activity",
+  ];
   return (
     <div>
       <Navbar bg="primary" variant="dark">
@@ -79,9 +79,14 @@ const [alert, setAlert] = useState({
           </Nav.Link>
         </Nav>
         <Nav className="">
-      <Nav.Link onClick={()=>{history.push("/login")}} >Logout</Nav.Link>
-     
-    </Nav>
+          <Nav.Link
+            onClick={() => {
+              history.push("/login");
+            }}
+          >
+            Logout
+          </Nav.Link>
+        </Nav>
       </Navbar>
       {alert.showAlert && (
         <Alert key="alert" variant={alert.variant}>
@@ -89,8 +94,7 @@ const [alert, setAlert] = useState({
         </Alert>
       )}
       <div className="task-container">
-        <Form onSubmit={onSubmit}
-        ref ={formRef}>
+        <Form onSubmit={onSubmit} ref={formRef}>
           <Form.Group controlId="taskTitle">
             <Form.Label>Title</Form.Label>
             <Form.Control type="text" placeholder="Add Title" name="title" />
