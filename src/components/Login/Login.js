@@ -64,7 +64,7 @@ export default function Login() {
                 required
               />
               <Form.Text className="text-muted">
-                Employee ID containes 3 digit number
+                Employee ID contains 3 digit number
               </Form.Text>
             </Form.Group>
 

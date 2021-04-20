@@ -15,7 +15,7 @@ import { useEffect} from "react";
 
 function App() {
   const isLoggedIn = localStorage.getItem('loggedIn') || false;
-  console.log(isLoggedIn)
+ 
   useEffect(() => {
     if (!localStorage.getItem("loggedIn")) {
       localStorage.setItem("loggedIn", false);
@@ -37,7 +37,7 @@ function App() {
         </Route>
 
         <Route exact path="/create-task">
-         {console.log(typeof(isLoggedIn))}
+         
           { isLoggedIn === 'true' ?  <NewTask /> : <Redirect to="/login" />  }
          
         </Route>
