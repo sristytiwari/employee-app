@@ -29,6 +29,7 @@ export default function Login() {
           value[1].password === values.password
         ) {
           localStorage.setItem("loggedIn", true);
+          console.log(localStorage.getItem("loggedIn"))
           history.push("/tasks");
         } else {
           setAlert({

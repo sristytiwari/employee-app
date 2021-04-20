@@ -88,6 +88,7 @@ export default function Homepage() {
           <Nav.Link
             onClick={() => {
               history.push("/login");
+              localStorage.setItem("loggedIn", false)
             }}
           >
             Logout
