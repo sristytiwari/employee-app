@@ -1,5 +1,5 @@
 # Prime self serve
-This is the repository for the Prime Self Serve App.  
+This is the repository for the Employee Task App.  
   <br />
   <br />
 
@@ -8,56 +8,36 @@ This is the repository for the Prime Self Serve App.
 
 ### Clone the repo  
 ```
-git clone https://github.com/urbanpiper/prime-self-serve.git
+git clone https://github.com/sristytiwari/employee-app.git
 ```
 
 ### Frontend Setup  
 
-Step 1. Move to client folder  
+Step 1. Move to folder  
 ```
-cd self_serve_client
+cd <folder-name>
 ```  
 
 Step 2. Install dependencies  
 ```
-yarn install
+npm install
 ``` 
 
 Step 3. To run frontend app  
 ```
-yarn start
+npm start
 ``` 
+### Backend. 
+Used firebase realtime database for backend.  
+firebase v8.4.1
+
+### Routing
+Used react-router-dom for navigation from pages.  
+react-router-dom v5.2.0
 
 
-## To run the project inside docker container
-Make sure you have docker hub and docker-compose installed on your system. 
-
-Step 1. Move to project root folder.  
-
-Step 2. Build and run container using docker-compose.
-```
-docker-compose up -d --build
-```  
-<br />
-<br />
-  
-
-
-## Staging Deployment
-
-Step 1. ssh into the ec2 instance.  
-
-Step 2. Move to project folder
-```
-cd prime-self-serve/
-```
-
-Step 3. Pull the latest changes
-```
-git pull
-```
-
-Step 4. Build and restart the container
-```
-docker-compose up -d --build
-```
+### Components used
+1. Login - Allows users to login with employee id and password
+2. Signup - Allows new users to signup 
+3. Homepage - Displays list of added tasks, users can upvote tasks, sort by date and upvote
+4. NewTask - Users can add new task and will save it to db
