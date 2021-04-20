@@ -1,0 +1,23 @@
+.login-container
+{display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+;
+}
+
+.form-container{
+    border: 1px solid gainsboro;
+    padding: 3rem 4rem;
+
+    box-shadow: 0px 0px 8px gainsboro;
+
+}
+.signUp{
+    cursor: pointer;
+}
+
+.signUp :hover{
+    text-decoration: underline;
+    color: blue;
+}
