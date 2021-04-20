@@ -27,6 +27,11 @@ Step 3. To run frontend app
 ```
 npm start
 ``` 
+### Deployment. 
+Used heroku for hoisting the app.
+```
+https://employee-task-app.herokuapp.com/login
+```
 ### Backend. 
 Used firebase realtime database for backend.  
 firebase v8.4.1
